@@ -1,10 +1,8 @@
 import fs from 'fs';
-import path from 'path';
-import __dirname from './__dirname.js';
-import { checkAccess, throwError } from '../utils.js';
+import { checkAccess, throwError, getPath } from '../utils.js';
 
 const read = async () => {
-  const pathFile = path.join(__dirname, 'files/fileToRead.txt');
+  const pathFile = getPath(import.meta.url, 'files/fileToRead.txt');
   const readFile = async () => {
     try {
       const content = await fs.promises.readFile(pathFile, 'utf8');
