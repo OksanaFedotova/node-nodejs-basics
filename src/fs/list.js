@@ -1,8 +1,10 @@
 import fs from 'fs';
-import { checkAccess, throwError, getPath } from '../utils.js';
+import path from 'path';
+import __dirname from './__dirname.js';
+import { checkAccess, throwError } from '../utils.js';
 
 const list = async () => {
-  const pathDir = getPath(import.meta.url, 'files');
+  const pathDir = path.join(__dirname, 'files');
   const listFiles = async () => { 
     try {
       const files = await fs.promises.readdir(pathDir, {withFileTypes: true});
