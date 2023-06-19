@@ -9,8 +9,8 @@ const copy = async () => {
 
   const copyFiles = async () => {
     try {
-      const files = await fs.promises.readdir(pathFiles, {withFileTypes: true});
-      if (files.length) await fs.promises.mkdir(pathCopy);
+      await fs.promises.mkdir(pathCopy);
+      const files = fs.promises.readdir(pathFiles, {withFileTypes: true});
       for (const file of files) {
         const filePath = path.join(__dirname, 'files', file.name);
         const copyPath = path.join(__dirname, 'files_copy', file.name);
